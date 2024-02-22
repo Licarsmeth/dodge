@@ -1,11 +1,14 @@
 extends Area2D
+signal hit
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("ready")
 	screen_size = get_viewport_rect().size
-	hide()
+	screen_size.x -= 63
+	screen_size.y -= 63
+	#hide()
 	
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -25,6 +28,7 @@ func _process(delta):
 		$AnimatedSprite2D.stop()
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	print(position)
 	
 	#choosing animations
 	if velocity.x != 0:
