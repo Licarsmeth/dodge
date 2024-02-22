@@ -28,7 +28,6 @@ func _process(delta):
 		$AnimatedSprite2D.stop()
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	print(position)
 	
 	#choosing animations
 	if velocity.x != 0:
@@ -38,3 +37,13 @@ func _process(delta):
 	elif velocity.y != 0: 
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0 
+
+func _on_body_entered(body):
+	hide ()
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true)
+
+func start(pos):
+	position = pos
+	show() 
+	$CollisionShape2D.disabled = false 
