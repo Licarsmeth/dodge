@@ -22,7 +22,8 @@ func _process(delta):
 		velocity.y -= 1
 
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		#velocity = velocity.normalized() * speed
+		velocity = velocity * speed
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()

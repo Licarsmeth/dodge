@@ -38,14 +38,16 @@ height = 134.0
 [node name="Player" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_11fi4")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(64, 72)
+position = Vector2(64, 64)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_latq3")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(66, 62)
+position = Vector2(64, 64)
 shape = SubResource("CapsuleShape2D_3lgwu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
