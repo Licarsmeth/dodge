@@ -14,16 +14,23 @@ func _process(_delta):
 func game_over():
 	$scoreTimer.stop()
 	$mobTimer.stop()
+	$HUD.show_game_over()
+	$music.stop()
+	$death.play()
 	
 func new_game():
+	$music.play()
 	score = 0
 	$Player.start($startPosition.position)
 	$startTimer.start()
-
-
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
+	get_tree().call_group("mobs", "queue_free")
+	
 func _on_score_timer_timeout():
 	score += 1
-
+	$HUD.update_score(score)
+	
 func _on_start_timer_timeout():
 	$mobTimer.start()
 	$scoreTimer.start()
@@ -47,7 +54,7 @@ func _on_mob_timer_timeout():
 	mob.rotation = direction
 	
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity = velocity.rotated(direction)
+	#mob.linear_velocity = velocity.rotated(direction)
 	
 #spawn mob by adding it to main scene
 	add_child(mob)
