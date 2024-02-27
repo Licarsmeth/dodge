@@ -4,7 +4,6 @@ signal hit
 var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("ready")
 	screen_size = get_viewport_rect().size
 	screen_size.x -= 63
 	screen_size.y -= 63
