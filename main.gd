@@ -54,7 +54,7 @@ func _on_mob_timer_timeout():
 	mob.rotation = direction
 	
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	#mob.linear_velocity = velocity.rotated(direction)
+	mob.linear_velocity = velocity.rotated(direction)
 	
 #spawn mob by adding it to main scene
 	add_child(mob)
